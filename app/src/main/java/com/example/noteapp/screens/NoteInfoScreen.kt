@@ -91,9 +91,6 @@ fun NoteInfoScreen(modifier: Modifier = Modifier) {
                     placeholder = {Text("Enter note description ")}
 //                contentPaddi ng = PaddingValues(0.dp)
                 )
-
-
-
             }
 
             Spacer(modifier = Modifier.height(40.dp))
@@ -103,3 +100,4 @@ fun NoteInfoScreen(modifier: Modifier = Modifier) {
         }
     }
 }
+

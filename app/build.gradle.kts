@@ -69,4 +69,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("androidx.compose.material:material:1.7.6")
+
 }
