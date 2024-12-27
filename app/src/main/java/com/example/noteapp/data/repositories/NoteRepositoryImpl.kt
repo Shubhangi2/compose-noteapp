@@ -1,27 +1,26 @@
 package com.example.noteapp.data.repositories
 
 import com.example.noteapp.data.Note
+import com.example.noteapp.data.data_source.NoteDao
 import com.example.noteapp.domain.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
-class NoteRepositoryImpl : NoteRepository {
+class NoteRepositoryImpl(
+    private val noteDao: NoteDao
+) : NoteRepository {
     override suspend fun getAllNotes(): Flow<List<Note>> {
-        TODO("Not yet implemented")
+        return noteDao.getAllNotes()
     }
 
-    override suspend fun getNoteById(id: String): Flow<Note> {
-        TODO("Not yet implemented")
+    override suspend fun getNoteById(id: Int): Note? {
+        return noteDao.getNoteById(id)
     }
 
     override suspend fun addNote(note: Note) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun updateNote(note: Note) {
-        TODO("Not yet implemented")
+        return noteDao.addNote(note)
     }
 
     override suspend fun deleteNote(note: Note) {
-        TODO("Not yet implemented")
+        return noteDao.deleteNote(note)
     }
 }

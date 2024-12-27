@@ -14,8 +14,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.noteapp.screens.NoteInfoScreen
-import com.example.noteapp.screens.NoteScreen
+import com.example.noteapp.presentation.screens.NoteInfoScreen
+import com.example.noteapp.presentation.screens.NoteScreen
 
 
 

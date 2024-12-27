@@ -1,5 +1,6 @@
-package com.example.noteapp.screens
+package com.example.noteapp.presentation.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,25 +28,48 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteapp.R
+import com.example.noteapp.presentation.NoteViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.noteapp.presentation.NoteState
 
 @Composable
-fun NoteScreen(modifier: Modifier = Modifier,onNoteInfoScreen: ()-> Unit) {
+fun NoteScreen(modifier: Modifier = Modifier,onNoteInfoScreen: ()-> Unit, viewModel: NoteViewModel = hiltViewModel()) {
+    val notes = viewModel.notes.value
+    val note = viewModel.note.value
+
+    Log.d("note", "NoteScreen: inside composable ")
+    when(notes){
+        is NoteState.Error -> {
+            Log.d("note", "NoteScreen error: ${notes.exception.message}")
+        }
+        is NoteState.Loading -> {
+            Log.d("note", "NoteScreen loading: laoding")
+        }
+        is NoteState.Success ->{
+            Log.d("note", "NoteScreen success: ${notes.data.size}")
+            Log.d("note", "NoteScreen success: ${notes.data[0].title}")
+        }
+    }
+
+
     Scaffold(
 
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 onNoteInfoScreen()
-            }, containerColor = Color.Black) {
+            }, containerColor = Color.DarkGray) {
                 Icon(
                     Icons.Rounded.Add,
                     contentDescription ="add icon",
                     tint = Color.White
                 )
             }
-
         }
     ) {
-        Box(modifier = Modifier.fillMaxSize().padding(it).background(Color.White)) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)
+            .background(Color.White)) {
             Column(
                 modifier = Modifier
 

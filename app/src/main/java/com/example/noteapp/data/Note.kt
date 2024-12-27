@@ -1,10 +1,13 @@
 package com.example.noteapp.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Note(
-    val id: String,
+    @PrimaryKey val id: Int?= null,
     val title: String,
     val content: String,
     val createdAt: String,
-    val updatedAt: String? = null,
 )
 
